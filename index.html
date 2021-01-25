@@ -129,16 +129,25 @@ body {background-color: black;}
     font-weight: bold;
 }
 /* Popup box BEGIN */
+
+img {
+  width: 75%;
+  height: auto;
+  /*transform:scale(2);*/
+  margin-left:50px;
+  margin-top:30px;
+}
 </style>
 	<body>
 			<h3><font color="white">Block Diagram K32L3 Kinetis Chip</font></h3>
 			
 
-			<img src="images/K32L3.svg" usemap="#image-map">
+			<img src="images/K32L3.svg" usemap="#image-map" w-resize>
 
 <map name="image-map">
-    <area target="" alt="PORTE" title="PORTE" coords="75,46,18,17" shape="rect" class="PORTE_popup">
-    <area target="" alt="GPIOE" title="GPIOE" coords="71,85,20,56" shape="rect" class="trigger_popup">
+    <area target="" alt="PORTE" title="PORTE" coords="40,40,150,100" shape="rect" class="PORTE_popup">
+					<!- coord format = (x,y) of top left rectangle + with + height ->
+    <area target="" alt="GPIOE" title="GPIOE" coords="40,140,150,200" shape="rect" class="trigger_popup">
 </map>
 
 <div class="hover_bkgr">
