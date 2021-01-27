@@ -16,7 +16,7 @@
 <style>
 body {background-color: black;}
 /* Popup box BEGIN */
-.hover_bkgr{
+[title~="popup"] {
     background:rgba(0,0,0,.4);
     cursor:pointer;
     display:none;
@@ -27,41 +27,12 @@ body {background-color: black;}
     width:100%;
     z-index:10000;
 }
-.hover_bkgr .helper{
+[title~="popup"] .helper{
     display:inline-block;
     height:100%;
     vertical-align:middle;
 }
-.hover_bkgr > div {
-    background-color: #fff;
-    box-shadow: 10px 10px 60px #555;
-    display: inline-block;
-    height: auto;
-    max-width: 551px;
-    min-height: 100px;
-    vertical-align: middle;
-    width: 60%;
-    position: relative;
-    border-radius: 8px;
-    padding: 15px 5%;
-}
-.PORTE{
-    background:rgba(0,0,0,.4);
-    cursor:pointer;
-    display:none;
-    height:100%;
-    position:fixed;
-    text-align:center;
-    top:0;
-    width:100%;
-    z-index:10000;
-}
-.PORTE .helper{
-    display:inline-block;
-    height:100%;
-    vertical-align:middle;
-}
-.PORTE > div {
+[title~="popup"] > div {
     background-color: #fff;
     box-shadow: 10px 10px 60px #555;
     display: inline-block;
@@ -94,22 +65,14 @@ body {background-color: black;}
 .popupCloseButton:hover {
     background-color: #ccc;
 }
-.trigger_popup {
+[class*="popup"] {
     cursor: pointer;
     font-size: 20px;
     margin: 20px;
     display: inline-block;
     font-weight: bold;
 }
-.PORTE_popup {
-    cursor: pointer;
-    font-size: 20px;
-    margin: 20px;
-    display: inline-block;
-    font-weight: bold;
-}
-/* Popup box BEGIN */
-
+/* Popup box END */
 img {
   width: 75%;
   height: auto;
@@ -127,10 +90,10 @@ img {
 <map name="image-map">
     <area target="" alt="PORTE" title="PORTE" coords="40,40,150,100" shape="rect" class="PORTE_popup">
 					<!- coord format = (x,y) of top left rectangle + width + height ->
-    <area target="" alt="GPIOE" title="GPIOE" coords="40,140,150,200" shape="rect" class="trigger_popup">
+    <area target="" alt="GPIOE" title="GPIOE" coords="40,140,150,200" shape="rect" class="GPIO_popup">
 </map>
 
-<div class="hover_bkgr">
+<div class="GPIO" title="popup">
     <span class="helper"></span>
     <div>
         <div class="popupCloseButton">&times;</div>
@@ -139,7 +102,7 @@ img {
     </div>
 </div>	
 
-<div class="PORTE">
+<div class="PORTE" title="popup">
     <span class="helper"></span>
     <div>
         <div class="popupCloseButton">&times;</div>
@@ -152,22 +115,16 @@ img {
 		<script type="text/javascript" src="js/groundwork.all.js"></script>
 		<script type="text/javascript">
 			$(window).load(function () {
-			$(".trigger_popup").click(function(){
-			   $('.hover_bkgr').show();
+			$(".GPIO_popup").click(function(){
+			   $('.GPIO').show();
 			});
-			$('.hover_bkgr').click(function(){
-				$('.hover_bkgr').hide();
-			});
-			$('.popupCloseButton').click(function(){
-				$('.hover_bkgr').hide();
+			$('.GPIO').click(function(){
+				$('.GPIO').hide();
 			});
 			$(".PORTE_popup").click(function(){
 				$('.PORTE').show();
 			});
 			$('.PORTE').click(function(){
-				$('.PORTE').hide();
-			});
-			$('.popupCloseButton1').click(function(){
 				$('.PORTE').hide();
 			});
 		});
