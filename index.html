@@ -94,26 +94,6 @@ body {background-color: black;}
 .popupCloseButton:hover {
     background-color: #ccc;
 }
-.popupCloseButton1 {
-    background-color: #fff;
-    border: 3px solid #999;
-    border-radius: 50px;
-    cursor: pointer;
-    display: inline-block;
-    font-family: arial;
-    font-weight: bold;
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    font-size: 25px;
-    line-height: 30px;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-}
-.popupCloseButton1:hover {
-    background-color: #ccc;
-}
 .trigger_popup {
     cursor: pointer;
     font-size: 20px;
@@ -146,7 +126,7 @@ img {
 
 <map name="image-map">
     <area target="" alt="PORTE" title="PORTE" coords="40,40,150,100" shape="rect" class="PORTE_popup">
-					<!- coord format = (x,y) of top left rectangle + with + height ->
+					<!- coord format = (x,y) of top left rectangle + width + height ->
     <area target="" alt="GPIOE" title="GPIOE" coords="40,140,150,200" shape="rect" class="trigger_popup">
 </map>
 
@@ -162,7 +142,7 @@ img {
 <div class="PORTE">
     <span class="helper"></span>
     <div>
-        <div class="popupCloseButton1">&times;</div>
+        <div class="popupCloseButton">&times;</div>
 			<p>GPIOE base address: 4100_F000h</p>
 			<p>PORTE base address: 4103_7000h</p>
 			<p>FGPIOE base address: F800_0000h</p>
