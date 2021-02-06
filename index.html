@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>microDevSys website</title>
 		<link type="text/css" rel="stylesheet" href="css/popup.css">
+        <link type="text/css" rel="stylesheet" href="css/jquery.snippet.css">
 		<!-- framework css --><!--[if gt IE 9]><!-->
 		<link type="text/css" rel="stylesheet" href="css/groundwork.css"><!--<![endif]-->
 		<!--[if lte IE 9]>
@@ -51,9 +52,119 @@ img {
 			<p>GPIOE base address: 4100_F000h</p>
 			<p>PORTE base address: 4103_7000h</p>
 			<p><font color="red"><i class="icon-play"></i>FGPIOE base address: F800_0000h <i class="icon-info-sign"></i> accessible only on the M0+ cortex</font></p>
+			
+			<div class="one pad-left pad-right bounceInUp animated">
+             <h1>Example initialisation with SDK : Board\pinmux.h</h1>
+       <pre data-lang="c">
+ /*! @name PORTE0 (coord R14), G2[5]/RED_LED_STS
+  @{ */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITPINS_CM4_RED_LED_FGPIO FGPIOE             /*!<@brief FGPIO peripheral base pointer */
+#define BOARD_INITPINS_CM4_RED_LED_GPIO GPIOE               /*!<@brief GPIO peripheral base pointer */
+#define BOARD_INITPINS_CM4_RED_LED_GPIO_PIN_MASK (1U << 0U) /*!<@brief GPIO pin mask */
+
+/* Symbols to be used with PORT driver */
+#define BOARD_INITPINS_CM4_RED_LED_PORT PORTE               /*!<@brief PORT peripheral base pointer */
+#define BOARD_INITPINS_CM4_RED_LED_PIN 0U                   /*!<@brief PORT pin number */
+#define BOARD_INITPINS_CM4_RED_LED_PIN_MASK (1U << 0U)      /*!<@brief PORT pin mask */
+                                                            /* @} */
+
+/*! @name PORTE8 (coord P16), BUTTON_LLWUP23
+  @{ */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITPINS_CM4_SW3_FGPIO FGPIOE             /*!<@brief FGPIO peripheral base pointer */
+#define BOARD_INITPINS_CM4_SW3_GPIO GPIOE               /*!<@brief GPIO peripheral base pointer */
+#define BOARD_INITPINS_CM4_SW3_GPIO_PIN_MASK (1U << 8U) /*!<@brief GPIO pin mask */
+
+/* Symbols to be used with PORT driver */
+#define BOARD_INITPINS_CM4_SW3_PORT PORTE               /*!<@brief PORT peripheral base pointer */
+#define BOARD_INITPINS_CM4_SW3_PIN 8U                   /*!<@brief PORT pin number */
+#define BOARD_INITPINS_CM4_SW3_PIN_MASK (1U << 8U)      /*!<@brief PORT pin mask */
+                                                        /* @} */
+
+/*! @name PORTE9 (coord N16), BUTTON_LLWUP24
+  @{ */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITPINS_CM4_SW4_FGPIO FGPIOE             /*!<@brief FGPIO peripheral base pointer */
+#define BOARD_INITPINS_CM4_SW4_GPIO GPIOE               /*!<@brief GPIO peripheral base pointer */
+#define BOARD_INITPINS_CM4_SW4_GPIO_PIN_MASK (1U << 9U) /*!<@brief GPIO pin mask */
+
+/* Symbols to be used with PORT driver */
+#define BOARD_INITPINS_CM4_SW4_PORT PORTE               /*!<@brief PORT peripheral base pointer */
+#define BOARD_INITPINS_CM4_SW4_PIN 9U                   /*!<@brief PORT pin number */
+#define BOARD_INITPINS_CM4_SW4_PIN_MASK (1U << 9U)      /*!<@brief PORT pin mask */
+                                                        /* @} */
+
+/*! @name PORTE12 (coord L12), BUTTON_LLWUP26
+  @{ */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITPINS_CM4_SW5_FGPIO FGPIOE              /*!<@brief FGPIO peripheral base pointer */
+#define BOARD_INITPINS_CM4_SW5_GPIO GPIOE                /*!<@brief GPIO peripheral base pointer */
+#define BOARD_INITPINS_CM4_SW5_GPIO_PIN_MASK (1U << 12U) /*!<@brief GPIO pin mask */
+
+/* Symbols to be used with PORT driver */
+#define BOARD_INITPINS_CM4_SW5_PORT PORTE                /*!<@brief PORT peripheral base pointer */
+#define BOARD_INITPINS_CM4_SW5_PIN 12U                   /*!<@brief PORT pin number */
+#define BOARD_INITPINS_CM4_SW5_PIN_MASK (1U << 12U)      /*!<@brief PORT pin mask */
+                                                         /* @} */ </pre></div>
+			
+			<div class="one pad-left pad-right bounceInDown animated">
+             <h1>Example initialisation with SDK : Board\pinmux.c</h1>
+             <pre data-lang="c">
+	    /* Clock Gate Control: Clock enabled. The current clock selection and divider options are locked. */
+	    CLOCK_EnableClock(kCLOCK_PortE);
+	    CLOCK_EnableClock(kCLOCK_Rgpio1);
+        
+         /* PORTE0 (pin R14) is configured as PTE0 */
+	    PORT_SetPinMux(BOARD_INITPINS_CM4_RED_LED_PORT, BOARD_INITPINS_CM4_RED_LED_PIN, kPORT_MuxAsGpio);
+
+	    /* PORTE12 (pin L12) is configured as PTE12 */
+	    PORT_SetPinMux(BOARD_INITPINS_CM4_SW5_PORT, BOARD_INITPINS_CM4_SW5_PIN, kPORT_MuxAsGpio);
+
+	    /* PORTE8 (pin P16) is configured as PTE8 */
+	    PORT_SetPinMux(BOARD_INITPINS_CM4_SW3_PORT, BOARD_INITPINS_CM4_SW3_PIN, kPORT_MuxAsGpio);
+
+	    /* PORTE9 (pin N16) is configured as PTE9 */
+	    PORT_SetPinMux(BOARD_INITPINS_CM4_SW4_PORT, BOARD_INITPINS_CM4_SW4_PIN, kPORT_MuxAsGpio);
+ </pre></div>
+ 
+ 
+ 
+ 		
+ 
 			</div>
 </div>	
+
 		<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+		<script type="text/javascript" src="js/libs/jquery.snippet.min.js"></script>
+		<script type="text/javascript">
+(function() {
+
+  $(document).ready(function() {
+    $('pre[data-lang="html"]').snippet("html", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    $('pre[data-lang="css"]').snippet("css", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    $('pre[data-lang="c"]').snippet("c", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    return $('pre[data-lang="js"]').snippet("javascript", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+  });
+
+}).call(this);
+</script>
 		<script type="text/javascript" src="js/groundwork.all.js"></script>
 		<script type="text/javascript">
 			$(window).load(function () {
