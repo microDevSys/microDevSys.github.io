@@ -1,61 +1,76 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>microDevSys website</title>
-		<link type="text/css" rel="stylesheet" href="css/popup.css">
-        <link type="text/css" rel="stylesheet" href="css/jquery.snippet.css">
-		<!-- framework css --><!--[if gt IE 9]><!-->
-		<link type="text/css" rel="stylesheet" href="css/groundwork.css"><!--<![endif]-->
-		<!--[if lte IE 9]>
+
+<head>
+	<meta charset="utf-8">
+	<title>microDevSys website</title>
+	<link type="text/css" rel="stylesheet" href="css/popup.css">
+	<link type="text/css" rel="stylesheet" href="css/jquery.snippet.css">
+	<!-- framework css -->
+	<!--[if gt IE 9]><!-->
+	<link type="text/css" rel="stylesheet" href="css/groundwork.css">
+	<!--<![endif]-->
+	<!--[if lte IE 9]>
 		<link type="text/css" rel="stylesheet" href="css/groundwork-core.css">
 		<link type="text/css" rel="stylesheet" href="css/groundwork-type.css">
 		<link type="text/css" rel="stylesheet" href="css/groundwork-ui.css">
 		<link type="text/css" rel="stylesheet" href="css/groundwork-anim.css">
 		<link type="text/css" rel="stylesheet" href="css/groundwork-ie.css">
 		<![endif]-->
-	</head>
+</head>
 <style>
-body {
-background-color: black;
-}
+	body {
+		background-color: black;
+	}
 
-img {
-  margin-left:50px;
-  margin-top:30px;
-  zoom:200%;
-}
+	img {
+		margin-left: 50px;
+		margin-top: 30px;
+		zoom: 200%;
+	}
 </style>
-	<body>
-			<h3><font color="white">Block Diagram K32L3 Kinetis Chip</font></h3>
-			<img src="images/K32L3.svg" usemap="#image-map" w-resize>
 
-<map name="image-map">
-								<!- coord format = (x,y) of top left rectangle + width + height ->
-    <area target="" alt="PORTE" title="PORTE" coords="20,20,70,40" shape="rect" class="PORTE_popup">
-    <area target="" alt="GPIOE" title="GPIOE" coords="20,80,75,45" shape="rect" class="GPIO_popup">
-</map>
+<body>
+	<h3>
+		<font color="white">Block Diagram K32L3 Kinetis Chip</font>
+	</h3>
+	<img src="images/K32L3.svg" usemap="#image-map" w-resize>
 
-<div class="GPIO" title="popup">
-    <span class="helper"></span>
-    <div>
-        <div class="popupCloseButton">x</div>
-       			<p class="message round">Test in progress</p>
+	<map name="image-map">
+		<!- coord format=(x,y) of top left rectangle + width + height ->
+			<area target="" alt="PORTE" title="PORTE" coords="20,20,70,40" shape="rect" class="PORTE_popup">
+			<area target="" alt="GPIOE" title="GPIOE" coords="20,80,75,45" shape="rect" class="GPIO_popup">
+	</map>
+
+	<div class="GPIO" title="popup">
+		<span class="helper"></span>
+		<div>
+			<div class="popupCloseButton">x</div>
+			<p class="message round">Test in progress</p>
 			<div><i class="icon-spinner icon-spin icon-2x"></i></div>
-    </div>
-</div>	
+		</div>
+	</div>
 
-<div class="PORTE" title="popup">
-    <span class="helper"></span>
-    <div>
-        <div class="popupCloseButton">x</div>
-			<p>GPIOE base address: 4100_F000h</p>
-			<p>PORTE base address: 4103_7000h</p>
-			<p><font color="red"><i class="icon-play"></i>FGPIOE base address: F800_0000h <i class="icon-info-sign"></i> accessible only on the M0+ cortex</font></p>
-			
+	<div class="PORTE" title="popup">
+		<span class="helper"></span>
+		<div>
+			<div class="popupCloseButton">x</div>
+			<p>
+			<h4>GPIOE base address: 4100_F000h</h4>
+			</p>
+			<p>
+			<h4>PORTE base address: 4103_7000h</h4>
+			</p>
+			<p>
+			<h4>
+				<font color="red"><i class="icon-play"></i>FGPIOE base address: F800_0000h <i
+						class="icon-info-sign"></i> accessible only on the M0+ cortex</font>
+			</h4>
+			</p>
+
 			<div class="one pad-left pad-right bounceInUp animated">
-             <h1>Example initialisation with SDK : Board\pinmux.h</h1>
-       <pre data-lang="c">
+				<h1>Example initialisation with SDK : Board\pinmux.h</h1>
+				<pre data-lang="c" id="code">
  /*! @name PORTE0 (coord R14), G2[5]/RED_LED_STS
   @{ */
 
@@ -111,10 +126,11 @@ img {
 #define BOARD_INITPINS_CM4_SW5_PIN 12U                   /*!<@brief PORT pin number */
 #define BOARD_INITPINS_CM4_SW5_PIN_MASK (1U << 12U)      /*!<@brief PORT pin mask */
                                                          /* @} */ 
-</pre></div>
+</pre>
+			</div>
 			<div class="one pad-left pad-right bounceInDown animated">
-             <h1>Example initialisation with SDK : Board\pinmux.c</h1>
-             <pre data-lang="c">
+				<h1>Example initialisation with SDK : Board\pinmux.c</h1>
+				<pre data-lang="c" id="code">
 	    /* Clock Gate Control: Clock enabled. The current clock selection and divider options are locked. */
 	    CLOCK_EnableClock(kCLOCK_PortE);
 	    CLOCK_EnableClock(kCLOCK_Rgpio1);
@@ -130,52 +146,50 @@ img {
 
 	    /* PORTE9 (pin N16) is configured as PTE9 */
 	    PORT_SetPinMux(BOARD_INITPINS_CM4_SW4_PORT, BOARD_INITPINS_CM4_SW4_PIN, kPORT_MuxAsGpio);
- </pre></div>
+ </pre>
 			</div>
-</div>	
+		</div>
+	</div>
 
-		<script type="text/javascript" src="js/libs/jquery.min.js"></script>
-		<script type="text/javascript" src="js/libs/jquery.snippet.min.js"></script>
-		<script type="text/javascript">
-(function() {
+	<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+	<script type="text/javascript" src="js/libs/jquery.snippet.min.js"></script>
+	<script type="text/javascript">
+		(function () {
 
-  $(document).ready(function() {
-    $('pre[data-lang="html"]').snippet("html", {
-      style: "groundwork",
-      clipboard: "/js/libs/ZeroClipboard.swf"
-    });
-    $('pre[data-lang="css"]').snippet("css", {
-      style: "groundwork",
-      clipboard: "/js/libs/ZeroClipboard.swf"
-    });
-    $('pre[data-lang="c"]').snippet("c", {
-      style: "groundwork",
-      clipboard: "/js/libs/ZeroClipboard.swf"
-    });
-    return $('pre[data-lang="js"]').snippet("javascript", {
-      style: "groundwork",
-      clipboard: "/js/libs/ZeroClipboard.swf"
-    });
-  });
-
-}).call(this);
-</script>
-		<script type="text/javascript" src="js/groundwork.all.js"></script>
-		<script type="text/javascript">
-			$(window).load(function () {
-			$(".GPIO_popup").click(function(){
-			   $('.GPIO').show();
+			$(document).ready(function () {
+				$('pre[data-lang="html"]').snippet("html", {
+					style: "groundwork",
+				});
+				$('pre[data-lang="css"]').snippet("css", {
+					style: "groundwork",
+				});
+				$('pre[data-lang="c"]').snippet("c", {
+					style: "groundwork",
+				});
+				$('pre[data-lang="js"]').snippet("javascript", {
+					style: "groundwork",
+				});
 			});
-			$('.GPIO').click(function(){
+
+		}).call(this);
+	</script>
+	<script type="text/javascript" src="js/groundwork.all.js"></script>
+	<script type="text/javascript">
+		$(window).load(function () {
+			$(".GPIO_popup").click(function () {
+				$('.GPIO').show();
+			});
+			$('.GPIO').click(function () {
 				$('.GPIO').hide();
 			});
-			$(".PORTE_popup").click(function(){
+			$(".PORTE_popup").click(function () {
 				$('.PORTE').show();
 			});
-			$('.PORTE').click(function(){
+			$('.PORTE').click(function () {
 				$('.PORTE').hide();
 			});
 		});
-		</script>
-	</body>
+	</script>
+</body>
+
 </html>
